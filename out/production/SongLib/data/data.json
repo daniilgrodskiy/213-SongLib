@@ -1,1 +1,14 @@
-{"artist":"hey","year":2000,"album":"hey","name":"hey"}
+[
+  {
+    "name": "hey",
+    "artist": "juney bug",
+    "album": "Juney Herey",
+    "year": 2010
+  },
+  {
+    "name": "2",
+    "artist": "boo",
+    "album": "shoe shoe",
+    "year": 2000
+  }
+]

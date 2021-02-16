@@ -20,20 +20,20 @@ public class Song {
     // JSON Methods
 
     /**
-     * JSONObject songJSONObject = song.toJSON();
+     * Usage: JSONObject songJSONObject = song.toJSON();
      * @return
      */
     public JSONObject toJSON() {
         JSONObject songJSON = new JSONObject();
-        songJSON.put("name", this.getName());
-        songJSON.put("artist", this.getArtist());
-        songJSON.put("album", this.getAlbum());
+        songJSON.put("name", this.getName().trim());
+        songJSON.put("artist", this.getArtist().trim());
+        songJSON.put("album", this.getAlbum().trim());
         songJSON.put("year", this.getYear());
         return songJSON;
     }
 
     /**
-     * Song song = Song.fromJSON(songJSONObject)
+     * Usage: Song song = Song.fromJSON(songJSONObject)
      * @param songJSON
      * @return
      */
@@ -42,7 +42,7 @@ public class Song {
                 (String) songJSON.get("name"),
                 (String) songJSON.get("artist"),
                 (String) songJSON.get("album"),
-                (Integer) songJSON.get("year"));
+                Integer.parseInt(songJSON.get("year").toString()));
     }
 
 

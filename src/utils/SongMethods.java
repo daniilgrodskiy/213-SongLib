@@ -1,5 +1,4 @@
 package utils;
-
 import model.Song;
 import org.json.simple.*;
 import org.json.simple.parser.*;
@@ -17,7 +16,6 @@ public class SongMethods {
             List<Song> songs = new ArrayList<>();
 
             Object parsedObject = new JSONParser().parse(new FileReader(JSON_FILE_PATH));
-
             JSONArray jsonArray = (JSONArray) parsedObject;
 
             for (Object o : jsonArray) {
@@ -25,7 +23,6 @@ public class SongMethods {
             }
 
             return songs;
-
         } catch (Exception e) {
             System.out.println("Something went wrong.");
             return new ArrayList<>();
