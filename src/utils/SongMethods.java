@@ -16,6 +16,9 @@ public class SongMethods {
             List<Song> songs = new ArrayList<>();
 
             Object parsedObject = new JSONParser().parse(new FileReader(JSON_FILE_PATH));
+
+            System.out.println(parsedObject);
+
             JSONArray jsonArray = (JSONArray) parsedObject;
 
             for (Object o : jsonArray) {
@@ -29,12 +32,17 @@ public class SongMethods {
         }
     }
 
-    public static boolean saveSong(Song song, EditType editType) throws IllegalStateException, IOException {
+    public static boolean saveSong(Song song, EditType editType) throws IllegalStateException, Exception {
         try {
             if (editType == EditType.CREATE) {
+                // TODO: Fix the edit code to actually save/create a song
                 // Creating a new song
-                JSONObject songJSON = song.toJSON();
 
+                Object parsedObject = new JSONParser().parse(new FileReader(JSON_FILE_PATH));
+                JSONArray jsonArray = (JSONArray) parsedObject;
+
+                JSONObject songJSON = song.toJSON();
+                jsonArray.add(songJSON);
                 PrintWriter pw = new PrintWriter(JSON_FILE_PATH);
                 pw.write(songJSON.toJSONString());
 
