@@ -2,7 +2,9 @@ package model;
 
 import org.json.simple.JSONObject;
 
-public class Song {
+import java.util.Comparator;
+
+public class Song{
     private String name;
     private String artist;
     private String album;
@@ -13,6 +15,15 @@ public class Song {
         this.artist = artist;
         this.album = album;
         this.year = year;
+    }
+
+    //Compare method
+    public int compare(Song song1, Song song2){
+        int value1 = song1.name.compareTo(song2.name);
+        if (value1 == 0) {
+            return song1.artist.compareTo(song2.artist);
+        }
+        return value1;
     }
 
 

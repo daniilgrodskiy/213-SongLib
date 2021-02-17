@@ -44,27 +44,34 @@ public class EditSongPage {
 
     public boolean handleSubmitButtonClick(ActionEvent event) throws IllegalArgumentException, Exception {
         // CHECKING YEAR
-        try {
-            // Make sure year is a positive integer
-            System.out.println(yearInput.getText());
-            if (yearInput.getText() != null) {
+        if (!yearInput.getText().equals("")){
+            try {
+                // Make sure year is a positive integer
                 int year = Integer.parseInt(yearInput.getText());
 
                 if (!(year > 0)) {
                     throw new IllegalArgumentException();
                 }
+            } catch(NumberFormatException e) {
+                ErrorBox.display("Invalid year. Year must be a positive number.");
+                return false;
+            } catch(IllegalArgumentException e) {
+                ErrorBox.display("Invalid year. Year must be greater than 0.");
+                return false;
             }
-        } catch(NumberFormatException e) {
-            ErrorBox.display("Invalid year. Year must be a positive number.");
+        }
+        if (nameInput.getText().equals("")){
+            ErrorBox.display("Please enter a song name!");
             return false;
-        } catch(IllegalArgumentException e) {
-            ErrorBox.display("Invalid year. Year must be greater than 0.");
+        } else if (artistInput.getText().equals("")){
+            ErrorBox.display("Please enter an album!");
             return false;
         }
 
         // Validator.validateSong(song);
 
         // ADDING/SAVING SONG
+
         Song newSong = new Song(nameInput.getText(), artistInput.getText(), albumInput.getText(), Integer.parseInt(yearInput.getText()));
 
         System.out.println(newSong.toString());

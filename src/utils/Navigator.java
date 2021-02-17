@@ -49,8 +49,9 @@ public class Navigator {
         // Find the controller and call initData method
         EditSongPage controller = loader.getController();
 
-        // TODO: Check this button text business here?
-        controller.initData(button.getText().equals("Edit") ? selectedSong : null);
+        // If button pressed is "Add Song" make selectedSong null, if not pass through selectedSong
+        if (button.getText().equals("Add Song")) selectedSong = null;
+        controller.initData(selectedSong);
 
         // Show scene
         // Gets the current window (avoids using 'Stage primaryStage' thing
