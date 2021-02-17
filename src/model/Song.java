@@ -2,8 +2,6 @@ package model;
 
 import org.json.simple.JSONObject;
 
-import java.util.Comparator;
-
 public class Song{
     private String name;
     private String artist;

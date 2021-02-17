@@ -71,8 +71,12 @@ public class EditSongPage {
         // Validator.validateSong(song);
 
         // ADDING/SAVING SONG
-
-        Song newSong = new Song(nameInput.getText(), artistInput.getText(), albumInput.getText(), Integer.parseInt(yearInput.getText()));
+        Song newSong;
+        if (yearInput.getText().equals("")){
+            newSong = new Song(nameInput.getText(), artistInput.getText(), albumInput.getText(), -1);
+        } else {
+            newSong = new Song(nameInput.getText(), artistInput.getText(), albumInput.getText(), Integer.parseInt(yearInput.getText()));
+        }
 
         System.out.println(newSong.toString());
 
