@@ -1,7 +1,7 @@
 package controller;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import utils.*;
@@ -12,7 +12,6 @@ import widgets.ErrorBox;
 public class EditSongPage {
 
     private Song oldSong;
-    private Scene songLibScene;
 
     // Components
     @FXML private Text titleText;
@@ -21,7 +20,6 @@ public class EditSongPage {
     @FXML private TextField albumInput;
     @FXML private TextField yearInput;
     @FXML private Button submitButton;
-    @FXML private Button backButton;
 
 
     public void initData(Song song) {
@@ -46,7 +44,7 @@ public class EditSongPage {
         }
     }
 
-    public boolean handleSubmitButtonClick(ActionEvent event) throws IllegalArgumentException, Exception {
+    public boolean handleSubmitButtonClick(ActionEvent event) throws Exception {
         // CHECKING YEAR
         if (!yearInput.getText().equals("")){
             try {
@@ -71,8 +69,6 @@ public class EditSongPage {
             ErrorBox.display("Please enter an album!");
             return false;
         }
-
-        // Validator.validateSong(song);
 
         // ADDING/SAVING SONG
         Song newSong;

@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import model.Song;
-
 import java.io.IOException;
 
 public class Navigator {

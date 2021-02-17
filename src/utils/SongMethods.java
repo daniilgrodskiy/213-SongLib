@@ -1,12 +1,11 @@
 package utils;
+
 import model.Song;
 import model.SongComparator;
 import org.json.simple.*;
 import org.json.simple.parser.*;
 import widgets.ErrorBox;
-
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 

@@ -16,9 +16,6 @@ import java.io.IOException;
 
 
 public class MainPage {
-    @FXML private Button addButton;
-    @FXML private Button deleteButton;
-    @FXML private Button editButton;
     @FXML private ListView<Song> songsListView;
     @FXML private Text nameLabel;
     @FXML private Text artistLabel;
