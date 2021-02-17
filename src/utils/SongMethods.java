@@ -1,5 +1,6 @@
 package utils;
 import model.Song;
+import model.SongComparator;
 import org.json.simple.*;
 import org.json.simple.parser.*;
 import widgets.ErrorBox;
@@ -26,6 +27,7 @@ public class SongMethods{
             for (Object o : jsonArray) {
                 songs.add(Song.fromJSON((JSONObject) o));
             }
+            Collections.sort(songs, new SongComparator());
 
             return songs;
         } catch (Exception e) {

@@ -33,7 +33,11 @@ public class EditSongPage {
             nameInput.setText(song.getName());
             artistInput.setText(song.getArtist());
             albumInput.setText(song.getAlbum());
-            yearInput.setText(String.valueOf(song.getYear()));
+            if (song.getYear() == -1){
+                yearInput.setText("String.valueOf(song.getYear())");
+            } else {
+                yearInput.setText(String.valueOf(song.getYear()));
+            }
             submitButton.setText("Save");
         } else {
             // New song

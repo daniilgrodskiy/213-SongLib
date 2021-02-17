@@ -61,19 +61,17 @@ public class MainPage {
 
     // BUTTON METHODS
     public void editSong(ActionEvent event) throws IOException {
-        if (songsList.size() == 0) {
-            ErrorBox.display("There are no songs to edit.");
-            return;
-        }
+
         //Gets source of action event
         Object node = event.getSource();
         Button button = (Button) node;
         System.out.println(button.getText());
         // Checks if "edit" button was clicked and if a song is selected
-        if (button.getText().equals("Edit") && selectedSongIndex == -1) {
-            ErrorBox.display("No song is selected to edit!");
-            return;
-        } else if (button.getText().equals("Edit")) {
+        if (button.getText().equals("Edit")) {
+            if (songsList.size() == 0) {
+                ErrorBox.display("There are no songs to edit.");
+                return;
+            }
             Navigator.navigateToEditSongPage(event, songsList.get(selectedSongIndex));
             return;
         }
