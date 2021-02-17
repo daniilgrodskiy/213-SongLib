@@ -9,7 +9,7 @@ import java.util.*;
 
 public class SongMethods {
 
-    static private final String JSON_FILE_PATH = SongMethods.class.getResource("../data/data.json").getPath();
+    static private final String JSON_FILE_PATH = "src/data/data.json";
 
     public static List<Song> getSongs() throws Exception {
         try {
@@ -17,7 +17,7 @@ public class SongMethods {
 
             Object parsedObject = new JSONParser().parse(new FileReader(JSON_FILE_PATH));
 
-            System.out.println(parsedObject);
+            System.out.println("All songs: " + parsedObject);
 
             JSONArray jsonArray = (JSONArray) parsedObject;
 
@@ -38,13 +38,19 @@ public class SongMethods {
                 // TODO: Fix the edit code to actually save/create a song
                 // Creating a new song
 
-                Object parsedObject = new JSONParser().parse(new FileReader(JSON_FILE_PATH));
-                JSONArray jsonArray = (JSONArray) parsedObject;
+                List<Song> songs = getSongs();
 
-                JSONObject songJSON = song.toJSON();
-                jsonArray.add(songJSON);
+                songs.add(song);
+
+                JSONArray jsonArray = new JSONArray();
+
+                for (Song s : songs) {
+                    jsonArray.add(s.toJSON());
+                }
+
+                System.out.println(jsonArray);
                 PrintWriter pw = new PrintWriter(JSON_FILE_PATH);
-                pw.write(songJSON.toJSONString());
+                pw.write(jsonArray.toJSONString());
 
                 pw.flush();
                 pw.close();

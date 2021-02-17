@@ -1,14 +1,1 @@
-[
-  {
-    "name": "hey",
-    "artist": "juney bug",
-    "album": "Juney Herey",
-    "year": 2010
-  },
-  {
-    "name": "2",
-    "artist": "boo",
-    "album": "shoe shoe",
-    "year": 2000
-  }
-]
+[{"artist":"juney bug","year":2010,"album":"Juney Herey","name":"hey"},{"artist":"boo","year":2000,"album":"shoe shoe","name":"2"},{"artist":"AYOOO","year":2001,"album":"NO WAY SHAWTY","name":"bruh"}]

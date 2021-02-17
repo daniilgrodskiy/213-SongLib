@@ -25,7 +25,7 @@ public class MainPage {
     @FXML private Text albumLabel;
     @FXML private Text yearLabel;
 
-    private int selectedSongIndex;
+    private int selectedSongIndex = 0;
     private ObservableList<Song> songsList;
 
     public void initData() throws Exception {
@@ -33,10 +33,8 @@ public class MainPage {
         songsList = FXCollections.observableArrayList(SongMethods.getSongs());
         songsListView.setItems(songsList);
 
-        songsListView.getSelectionModel().select(0);
-
         songsListView.getSelectionModel().selectedIndexProperty().addListener((abs, oldVal, newVal) -> showSong());
-
+        songsListView.getSelectionModel().select(0);
     }
 
     public void showSong() {
