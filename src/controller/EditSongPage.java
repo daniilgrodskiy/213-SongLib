@@ -34,7 +34,7 @@ public class EditSongPage {
             artistInput.setText(song.getArtist());
             albumInput.setText(song.getAlbum());
             if (song.getYear() == -1){
-                yearInput.setText("String.valueOf(song.getYear())");
+                yearInput.setText("");
             } else {
                 yearInput.setText(String.valueOf(song.getYear()));
             }
