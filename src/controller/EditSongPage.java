@@ -11,7 +11,7 @@ import widgets.ErrorBox;
 
 public class EditSongPage {
 
-    private EditType editType;
+    private Song oldSong;
     private Scene songLibScene;
 
     // Components
@@ -27,7 +27,7 @@ public class EditSongPage {
     public void initData(Song song) {
         if (song != null) {
             // Old song
-            editType = EditType.UPDATE;
+            oldSong = song;
 
             titleText.setText("Edit song");
             nameInput.setText(song.getName());
@@ -37,8 +37,6 @@ public class EditSongPage {
             submitButton.setText("Save");
         } else {
             // New song
-            editType = EditType.CREATE;
-
             titleText.setText("Add song");
             submitButton.setText("Create");
         }
@@ -64,11 +62,11 @@ public class EditSongPage {
         // Validator.validateSong(song);
 
         // ADDING/SAVING SONG
-        Song song = new Song(nameInput.getText(), artistInput.getText(), albumInput.getText(), Integer.parseInt(yearInput.getText()));
+        Song newSong = new Song(nameInput.getText(), artistInput.getText(), albumInput.getText(), Integer.parseInt(yearInput.getText()));
 
-        System.out.println(song.toString());
+        System.out.println(newSong.toString());
 
-        if (SongMethods.saveSong(song, editType)) {
+        if (SongMethods.saveSong(oldSong, newSong)) {
             // Navigate back to main page
             Navigator.navigateToMainPage(event);
             return true;

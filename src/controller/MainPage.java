@@ -39,12 +39,20 @@ public class MainPage {
 
     public void showSong() {
         selectedSongIndex = songsListView.getSelectionModel().selectedIndexProperty().intValue();
+
+        if (selectedSongIndex == -1) {
+            nameLabel.setText("No songs added");
+            artistLabel.setText("");
+            albumLabel.setText("");
+            yearLabel.setText("");
+            return;
+        }
+
         Song selectedSong = songsList.get(selectedSongIndex);
         nameLabel.setText(selectedSong.getName());
         artistLabel.setText(selectedSong.getArtist());
         albumLabel.setText(selectedSong.getAlbum());
         yearLabel.setText(String.valueOf(selectedSong.getYear()));
-
     }
 
     // BUTTON METHODS
@@ -57,10 +65,21 @@ public class MainPage {
         }
     }
 
-    public void deleteSong() {
+    public void deleteSong() throws Exception {
         final boolean shouldDelete = AlertBox.display("Delete Song","Are you sure you want to delete this song?");
 
-        if (shouldDelete) SongMethods.deleteSong(songsList.get(selectedSongIndex));
+        if (shouldDelete) {
+            int indexToDelete = SongMethods.deleteSong(songsList.get(selectedSongIndex));
+            songsList.remove(indexToDelete);
+
+            if (songsList.size() > 0) {
+                if (indexToDelete >= songsList.size()) {
+                    songsListView.getSelectionModel().select(indexToDelete - 1);
+                } else {
+                    songsListView.getSelectionModel().select(indexToDelete);
+                }
+            }
+        }
     }
 
 
