@@ -57,12 +57,26 @@ public class MainPage {
 
     // BUTTON METHODS
     public void editSong(ActionEvent event) throws IOException {
-        try {
+//        try {
+//            Navigator.navigateToEditSongPage(event, songsList.get(selectedSongIndex));
+//        } catch(Exception e) {
+//            // TODO: Fix this so that 'Edit' button doesn't navigate if no task is selected
+//            Navigator.navigateToEditSongPage(event, null);
+//        }
+        //Gets source of action event
+        Object node = event.getSource();
+        Button button = (Button) node;
+        System.out.println(button.getText());
+        //Checks if "edit" button was clicked and if a song is selected
+        if (button.getText().equals("Edit") && selectedSongIndex == -1) {
+            ErrorBox.display("No song is selected to edit!");
+            return;
+        } else if (button.getText().equals("Edit")) {
             Navigator.navigateToEditSongPage(event, songsList.get(selectedSongIndex));
-        } catch(Exception e) {
-            // TODO: Fix this so that 'Edit' button doesn't navigate if no task is selected
-            Navigator.navigateToEditSongPage(event, null);
+            return;
         }
+        //If edit wasnt clicked then add song is called
+        Navigator.navigateToEditSongPage(event, null);
     }
 
     public void deleteSong() throws Exception {

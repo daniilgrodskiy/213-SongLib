@@ -46,10 +46,13 @@ public class EditSongPage {
         // CHECKING YEAR
         try {
             // Make sure year is a positive integer
-            int year = Integer.parseInt(yearInput.getText());
+            System.out.println(yearInput.getText());
+            if (yearInput.getText() != null) {
+                int year = Integer.parseInt(yearInput.getText());
 
-            if (!(year > 0)) {
-                throw new IllegalArgumentException();
+                if (!(year > 0)) {
+                    throw new IllegalArgumentException();
+                }
             }
         } catch(NumberFormatException e) {
             ErrorBox.display("Invalid year. Year must be a positive number.");
